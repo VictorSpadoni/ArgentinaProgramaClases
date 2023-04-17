@@ -9,6 +9,7 @@
    	<link rel="stylesheet" href="../Trabajo Integrador/css/normalize.css">
 	 
 	   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	   <script src=""></script>
 	 <script> 
 	   $(document).ready(function() {
 		$('.turnos').click(function() {
@@ -240,16 +241,16 @@
    
 					 <form action="enviar" method="post">
 						<label>Nombre:</label>
-						<input type="text" name="nombre" required>
+						<input type="text" name="nombre" class="validate" required>
 						<br>
 						<label>Numero de contacto</label>
-						<input type="tel" name="numero" required>
+						<input type="tel" name="numero" class="validate" required>
 						<br>
 						<label>Correo electrónico:</label>
-						<input type="email" name="correo" required>
+						<input type="email" name="correo" class="validate" required>
 						<br>
 						<label>Cuándo te gustaria inicar?</label>
-						<input type="date" name="fecha" required>
+						<input type="date" name="fecha" class="validate" required>
 						<br>
 						<label>Comentanos tus dudas:</label>
 						<textarea name="mensaje" ></textarea>
