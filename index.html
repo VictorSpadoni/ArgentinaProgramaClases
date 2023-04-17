@@ -32,6 +32,34 @@
 });
 
 	</script>
+	<script>
+		
+     const downloadBtn = document.querySelector('#download-btn');
+     downloadBtn.addEventListener('click', () => {
+     const form = document.querySelector('#my-form');
+     const formData = new FormData(form);
+     const xhr = new XMLHttpRequest();
+     xhr.open('POST', 'https://api.pdfshift.io/v2/convert/');
+     xhr.setRequestHeader('Content-Type', 'application/json');
+     xhr.setRequestHeader('Authorization', '340a8063f59e44a29cac66dba6bbb694');
+     xhr.responseType = 'blob';
+     xhr.onload = () => {
+      if (xhr.status === 200) {
+        const blob = new Blob([xhr.response], { type: 'application/pdf' });
+        const link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
+        link.download = 'formulario.pdf';
+        link.click();
+      }
+    };
+     xhr.send(JSON.stringify({
+      source: 'html',
+      html: form.outerHTML,
+      margin: '0.5in'
+    }));
+  });
+</script>
+	</script>
   
     <script>
 		$(document).ready(function() {
@@ -256,6 +284,7 @@
 						<textarea name="mensaje" ></textarea>
 						<br>
 						<input type="submit" id="submit-btn" value="Enviar">
+						<button type="button" id="download-btn">Descargar PDF de esta informacion</button>
     
 					</form>
 				</div>
